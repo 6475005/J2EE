@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <!-- struts2的action必须放在一个指定的包空间下定义 -->
+    <package name="adminaction" extends="struts-default">
+    <!-- 定义处理请求URL为login.action的Action -->
+        <action name="loginAction" class="adminaction.LoginAction">
+        <!-- 定义处理结果字符串和资源之间的映射关系 -->
+            <result name="success">/index.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="input">/login.jsp</result>
+        </action>
+        <action name="addAction" class="adminaction.AdminAddAction">
+        <!-- 定义处理结果字符串和资源之间的映射关系 -->
+            <result name="success" type="redirect">/success.jsp</result>
+            <result name="error">/addadmin.jsp</result>
+            <result name="input">/addadmin.jsp</result>
+        </action>
+        <action name="deleteAction" class="adminaction.AdminDeleteAction">
+        <!-- 定义处理结果字符串和资源之间的映射关系 -->
+            <result name="success" type="redirect">/login.jsp</result>
+            <result name="error">/index.jsp</result>
+        </action>
+        <action name="repasswordAction" class="adminaction.AdminRepasswordAction">
+        <!-- 定义处理结果字符串和资源之间的映射关系 -->
+            <result name="success" type="redirect">/success.jsp</result>
+            <result name="error">/repassword.jsp</result>
+            <result name="input">/repassword.jsp</result>
+        </action>
+        <action name="exitAction" class="adminaction.ExitAction">
+        <!-- 定义处理结果字符串和资源之间的映射关系 -->
+            <result name="success" type="redirect">login.jsp</result>
+        </action>
+    </package>
+    
+    <package name="studentaction" extends="struts-default">
+    	<action name="addStudentAction" class="studentaction.StudentAddAction"> 
+    		<result name="success" type="redirect">/success.jsp</result>
+    		<result name="error">/addstudent.jsp</result>
+    		<result name="input">/addstudent.jsp</result>
+    	</action>
+    	<action name="getStudentListAction" class="studentaction.getStudentListAction"> 
+    		<result name="success">/studentlist.jsp</result>
+    		<result name="error">/studentlist.jsp</result>
+    		<result name="input">/studentlist.jsp</result>
+    	</action>
+    	<action name="upDataStudentListAction" class="studentaction.UpDataStudentListAction"> 
+    		<result name="success">/studentlist.jsp</result>
+    		<result name="error">/studentlist.jsp</result>
+    		<result name="input">/studentlist.jsp</result>
+    	</action>
+    	<action name="deleteStudentAction" class="studentaction.StudentDeleteAction"> 
+    		<result name="success">/studentlist.jsp</result>
+    		<result name="error">/studentlist.jsp</result>
+    		<result name="input">/studentlist.jsp</result>
+    	</action>
+    	<action name="updataStudentAction" class="studentaction.UpdataStudentAction"> 
+    		<result name="success" type="redirectAction">/upDataStudentListAction</result>
+    		<result name="error">/studentupdata.jsp</result>
+    		<result name="input">/studentupdata.jsp</result>
+    	</action>
+    	<!-- 查询学生 -->
+    	<action name="queryStudentActionByNumber" class="studentaction.StudentQueryAction" method="queryByNumber"> 
+    		<result name="success">/studentlist.jsp</result>
+    		<result name="error">/noresult.jsp</result>
+    		<result name="input">/noresult.jsp</result>
+    	</action>
+    	<action name="queryStudentActionByName" class="studentaction.StudentQueryAction" method="queryByName"> 
+    		<result name="success">/studentlist.jsp</result>
+    		<result name="error">/noresult.jsp</result>
+    		<result name="input">/noresult.jsp</result>
+    	</action>
+    	<action name="queryStudentActionByGrade" class="studentaction.StudentQueryAction" method="queryByGrade"> 
+    		<result name="success">/studentlist.jsp</result>
+    		<result name="error">/noresult.jsp</result>
+    		<result name="input">/noresult.jsp</result>
+    	</action>
+    	<action name="queryStudentActionByMajor" class="studentaction.StudentQueryAction" method="queryByMajor"> 
+    		<result name="success">/studentlist.jsp</result>
+    		<result name="error">/noresult.jsp</result>
+    		<result name="input">/noresult.jsp</result>
+    	</action>
+    </package>
+</struts> 

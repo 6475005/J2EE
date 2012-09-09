@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 开发模式设置 -->
+	 <!-- 影响性能，但带来更好的开发过程跟踪和错误定位 -->
+	 <!-- 程序正式发布是取消这些开发模式设置 -->	
+	
+	<constant name="struts.devMode" value="true"/>
+	<constant name="struts.serve.static.browserCache" value="false"/>
+	<constant name="struts.i18n.reload" value="true"/>
+	<constant name="struts.configuration.xml.reload" value="true"/>
+	
+	<constant name="struts.custom.i18n.resources" value="messageResource"/>
+	<constant name="struts.i18n.encoding" value="UTF-8"/> 
+	<!-- 引入其他模块配置 -->
+	 <include file="student.xml"/>
+</struts> 

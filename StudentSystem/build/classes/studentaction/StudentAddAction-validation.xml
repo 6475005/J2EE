@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+"-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+"http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="student.number">
+	<!-- 校验学号 -->
+	<field-validator type="int">
+		<param name="min">100000</param>
+		<param name="max">999999</param>
+		<message>学号必须是${min}-${max}之间！</message>
+	</field-validator>
+	<field-validator type="required">
+		<message>请输入学号</message>
+	</field-validator>
+	</field>
+	
+	<field name="student.name">
+	<!-- 校验姓名长度 -->
+	<field-validator type="stringlength">
+		<param name="minLength">2</param>
+		<param name="maxLength">5</param>
+		<message>姓名长度必须在${minLength}-${maxLength}位之间</message>
+	</field-validator>
+	<field-validator type="requiredstring">
+		<message>请输入学生姓名</message>
+	</field-validator>
+	</field>
+	
+	<field name="student.phone">
+	<!-- 校验电话 -->
+	<field-validator type="stringlength">
+		<param name="minLength">7</param>
+		<param name="maxLength">11</param>
+		<message>电话长度必须在${minLength}-${maxLength}位之间</message>
+	</field-validator>
+	<field-validator type="requiredstring">
+		<message>请输入电话</message>
+	</field-validator>
+	</field>
+		
+</validators>
