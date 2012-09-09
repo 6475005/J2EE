@@ -60,7 +60,7 @@ public class getStudentListAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		countPage = (studentDao.query().size()%PAGESIZE)+1;
+		countPage = (studentDao.query().size()/PAGESIZE)+1;
 		String []temp = new String[countPage];
 		for(int i=0;i<countPage;i++){
 			temp[i]=(i+1)+"";
