@@ -7,6 +7,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import db.AdminDbManager;
 
+@SuppressWarnings("serial")
 public class AdminDeleteAction extends ActionSupport {
 
 	private AdminDbManager adminDao;
@@ -32,6 +33,9 @@ public class AdminDeleteAction extends ActionSupport {
 	public String execute() throws Exception {
 		Admin admin = (Admin) ActionContext.getContext().getSession()
 				.get("ADMIN");
+		if (admin == null) {
+			return SUCCESS;
+		}
 		if (admin.getPassword().equals(password)) {
 			adminDao.delete(admin);
 			ActionContext.getContext().getSession().clear();

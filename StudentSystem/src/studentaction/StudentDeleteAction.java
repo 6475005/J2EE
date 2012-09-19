@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import db.StudentDbManager;
 
+@SuppressWarnings("serial")
 public class StudentDeleteAction extends ActionSupport{
 	private String number;
 	private StudentDbManager studentDao;

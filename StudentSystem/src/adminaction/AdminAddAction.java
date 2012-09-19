@@ -2,10 +2,12 @@ package adminaction;
 
 import object.Admin;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import db.AdminDbManager;
 
+@SuppressWarnings("serial")
 public class AdminAddAction extends ActionSupport {
 	private String username;
 	private String password;
@@ -46,10 +48,12 @@ public class AdminAddAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
+		Admin admin = (Admin)ActionContext.getContext().getSession().get("ADMIN");
+		if(admin == null){return LOGIN;}
 		if (password != null && username != null) {
 			if (password.equals(repassword)) {
-				Admin admin = adminDao.queryByName(username);
-				if (admin != null) {
+				Admin admin2 = adminDao.queryByName(username);
+				if (admin2 != null) {
 					return ERROR;
 				} else {
 					adminDao.add(username, password);

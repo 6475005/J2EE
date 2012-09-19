@@ -9,21 +9,21 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import db.StudentDbManager;
 
+@SuppressWarnings("serial")
 public class getStudentListAction extends ActionSupport {
 	private static final int PAGESIZE = 7;
 	private int currentPage;
 	private int countPage;
-	private String []pages;
+	private int countStudent;
 	private List<Student> list = new ArrayList<Student>();
 	private StudentDbManager studentDao;
 	
-
-	public String[] getPages() {
-		return pages;
+	public int getCountStudent() {
+		return countStudent;
 	}
 
-	public void setPages(String[] pages) {
-		this.pages = pages;
+	public void setCountStudent(int countStudent) {
+		this.countStudent = countStudent;
 	}
 
 	public int getCountPage() {
@@ -60,12 +60,8 @@ public class getStudentListAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		countPage = (studentDao.query().size()/PAGESIZE)+1;
-		String []temp = new String[countPage];
-		for(int i=0;i<countPage;i++){
-			temp[i]=(i+1)+"";
-		}
-		pages = temp;
+		countStudent = studentDao.query().size();
+		countPage = (countStudent/PAGESIZE)+1;
 		if(currentPage<=0){currentPage=1;}
 		if(currentPage>=countPage){currentPage=countPage;}
 		list = studentDao.getStudentByPaging(currentPage, PAGESIZE);

@@ -27,6 +27,37 @@
 	</field-validator>
 	</field>
 	
+	<field name="student.sex">
+	<!-- 校验性别 -->
+	<field-validator type="requiredstring">
+		<message>请选择学生性别</message>
+	</field-validator>
+	</field>
+	
+	<field name="student.major">
+	<!-- 校验专业 -->
+	<field-validator type="stringlength">
+		<param name="minLength">2</param>
+		<param name="maxLength">5</param>
+		<message>专业长度必须在${minLength}-${maxLength}位之间</message>
+	</field-validator>
+	<field-validator type="requiredstring">
+		<message>请输入专业</message>
+	</field-validator>
+	</field>
+	
+	<field name="student.grade">
+	<!-- 校验班级 -->
+	<field-validator type="stringlength">
+		<param name="minLength">2</param>
+		<param name="maxLength">5</param>
+		<message>班级长度必须在${minLength}-${maxLength}位之间</message>
+	</field-validator>
+	<field-validator type="requiredstring">
+		<message>请输入班级</message>
+	</field-validator>
+	</field>
+	
 	<field name="student.phone">
 	<!-- 校验电话 -->
 	<field-validator type="stringlength">

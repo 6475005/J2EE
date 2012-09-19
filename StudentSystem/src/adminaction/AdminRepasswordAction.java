@@ -7,6 +7,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import db.AdminDbManager;
 
+@SuppressWarnings("serial")
 public class AdminRepasswordAction extends ActionSupport {
 	private AdminDbManager adminDao;
 	private String password;

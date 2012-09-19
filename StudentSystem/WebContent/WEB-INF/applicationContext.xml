@@ -12,41 +12,61 @@
 		<property name="adminDao" ref="adminDao"></property>
 		<property name="studentDao" ref="studentDao"></property>
 	</bean>
-	<bean id="addAction" class="adminaction.AdminAddAction"  scope="prototype">
+	<bean id="addAction" class="adminaction.AdminAddAction" scope="prototype">
 		<property name="adminDao" ref="adminDao"></property>
 	</bean>
-	<bean id="deleteAction" class="adminaction.AdminDeleteAction"  scope="prototype">
+	<bean id="deleteAction" class="adminaction.AdminDeleteAction"
+		scope="prototype">
 		<property name="adminDao" ref="adminDao"></property>
 	</bean>
-	<bean id="repasswordAction" class="adminaction.AdminRepasswordAction"  scope="prototype">
+	<bean id="repasswordAction" class="adminaction.AdminRepasswordAction"
+		scope="prototype">
 		<property name="adminDao" ref="adminDao"></property>
 	</bean>
-	<bean id="exitAction" class="adminaction.ExitAction"  scope="prototype">
+	<bean id="exitAction" class="adminaction.ExitAction" scope="prototype">
 	</bean>
 	<!-- Student Action -->
-	<bean id="studentAddAction" class="studentaction.StudentAddAction"  scope="prototype">
+	<bean id="studentAddAction" class="studentaction.StudentAddAction"
+		scope="prototype">
 		<property name="studentDao" ref="studentDao"></property>
 	</bean>
-	<bean id="getStudentListAction" class="studentaction.getStudentListAction"  scope="prototype">
+	<bean id="getStudentListAction" class="studentaction.getStudentListAction"
+		scope="prototype">
 		<property name="studentDao" ref="studentDao"></property>
 	</bean>
-	<bean id="upDataStudentListAction" class="studentaction.UpDataStudentListAction"  scope="prototype">
+	<bean id="upDataStudentListAction" class="studentaction.UpDataStudentListAction"
+		scope="prototype">
 		<property name="studentDao" ref="studentDao"></property>
 	</bean>
-	<bean id="deleteStudentAction" class="studentaction.StudentDeleteAction"  scope="prototype">
+	<bean id="deleteStudentAction" class="studentaction.StudentDeleteAction"
+		scope="prototype">
 		<property name="studentDao" ref="studentDao"></property>
 	</bean>
-	<bean id="updataStudentAction" class="studentaction.UpdataStudentAction"  scope="prototype">
+	<bean id="updataStudentAction" class="studentaction.UpdataStudentAction"
+		scope="prototype">
 		<property name="studentDao" ref="studentDao"></property>
 	</bean>
-	<bean id="queryStudentAction" class="studentaction.StudentQueryAction"  scope="prototype">
+	<bean id="queryStudentByGradeAction" class="studentaction.StudentQueryByGradeAction"
+		scope="prototype">
 		<property name="studentDao" ref="studentDao"></property>
 	</bean>
-	
+	<bean id="queryStudentByMajorAction" class="studentaction.StudentQueryByMajorAction"
+		scope="prototype">
+		<property name="studentDao" ref="studentDao"></property>
+	</bean>
+	<bean id="queryStudentByNameAction" class="studentaction.StudentQueryByNameAction"
+		scope="prototype">
+		<property name="studentDao" ref="studentDao"></property>
+	</bean>
+	<bean id="queryStudentByNumberAction" class="studentaction.StudentQueryByNumberAction"
+		scope="prototype">
+		<property name="studentDao" ref="studentDao"></property>
+	</bean>
+
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<!-- 数据库连接信息 -->
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/studentsystem" />	
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/studentsystem" />
 		<property name="user" value="root"></property>
 		<property name="password" value="8840153"></property>
 		<!-- 连接池配置信息 -->
@@ -55,10 +75,11 @@
 		<property name="maxIdleTime" value="20"></property>
 		<property name="initialPoolSize" value="1"></property>
 	</bean>
-	
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="mappingResources" > 
+		<property name="mappingResources">
 			<list>
 				<value>object/Admin.hbm.xml</value>
 				<value>object/Student.hbm.xml</value>
@@ -71,12 +92,14 @@
 			</props>
 		</property>
 	</bean>
-	
+
 	<bean id="adminDao" class="db.AdminDbManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean id="studentDao" class="db.StudentDbManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	
+
+	<bean id="AdminInterceptor" class="interceptor.AdminInterceptor"></bean>
 </beans>
+

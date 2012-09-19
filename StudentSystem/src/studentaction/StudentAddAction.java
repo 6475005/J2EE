@@ -6,6 +6,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import db.StudentDbManager;
 
+@SuppressWarnings("serial")
 public class StudentAddAction extends ActionSupport {
 	private Student student;
 	private StudentDbManager studentDao;
@@ -30,10 +31,10 @@ public class StudentAddAction extends ActionSupport {
 	public String execute() throws Exception {
 		if (!studentDao.query(Integer.valueOf(student.getNumber()))) {
 			studentDao.add(student);
+
 			return SUCCESS;
 		} else {
 			return ERROR;
 		}
 	}
-
 }

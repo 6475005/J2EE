@@ -4,6 +4,11 @@
 "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
 <validators>
 	<field name="major">
+	<field-validator type="stringlength">
+		<param name="minLength">2</param>
+		<param name="maxLength">5</param>
+		<message>专业长度必须在${minLength}-${maxLength}位之间</message>
+	</field-validator>
 	<field-validator type="requiredstring">
 		<message>请输入专业</message>
 	</field-validator>
@@ -12,11 +17,11 @@
 	<field name="grade">
 	<field-validator type="stringlength">
 		<param name="minLength">2</param>
-		<param name="maxLength">7</param>
-		<message>年级长度必须在${minLength}-${maxLength}位之间</message>
+		<param name="maxLength">5</param>
+		<message>班级长度必须在${minLength}-${maxLength}位之间</message>
 	</field-validator>
 	<field-validator type="requiredstring">
-		<message>请输入年级</message>
+		<message>请输入班级</message>
 	</field-validator>
 	</field>
 	

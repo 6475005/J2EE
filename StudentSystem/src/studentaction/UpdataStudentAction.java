@@ -6,6 +6,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import db.StudentDbManager;
 
+@SuppressWarnings("serial")
 public class UpdataStudentAction extends ActionSupport {
 	private StudentDbManager studentDao;
 	private String number;
