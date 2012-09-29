@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.multipart.maxSize" value="3048576000"></constant>
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.multipart.saveDir" value="c:/"></constant>
+	<package name="action" extends="struts-default">
+		<global-results>
+        	<result name="input" type="redirect">login.jsp</result>
+        	<result name="sqlinj" type="redirect" >error.jsp</result>
+        </global-results>
+		
+		<action name="loginAction" class="action.LoginAction">
+			<result name="success">addnews.jsp</result>
+			<result name="error">login.jsp</result>
+			<result name="input">login.jsp</result>
+			<result name="none">login.jsp</result>
+		</action>
+		<action name="addNewsAction" class="action.AddNewsAction">
+			<result name="success" type="redirectAction">getAllNewsAction</result>
+			<result name="error">addnews.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+		<action name="getAllNewsAction" class="action.GetAllNewsAction">
+			<result name="updatanews">updatanews.jsp</result>
+			<result name="error">addnews.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+		<action name="index" class="action.GetTenNews">
+			<result name="success" >index.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+		<action name="updataNewsAction" class="action.UpdataNewsAction">
+			<result name="success" type="redirectAction">getAllNewsAction</result>
+			<result name="error">addnews.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+		<action name="deleteNewsAction" class="action.DeleteNewsAction">
+			<result name="success" type="redirectAction">getNewsToDelete</result>
+			<result name="error">addnews.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+		<action name="getNewsToDelete" class="action.GetNewsToDelete">
+			<result name="deletenews">deletenews.jsp</result>
+			<result name="error">addnews.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+		<action name="getNewsToUpdata" class="action.GetNewsToUpdata">
+			<result name="success">updata.jsp</result>
+			<result name="error">addnews.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+		<action name="repasswordAction" class="action.rePasswordAction">
+			<result name="success">addnews.jsp</result>
+			<result name="error">repassword.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+		<action name="exitAction" class="action.ExitAction">
+			<result name="success" type="redirectAction">index</result>
+		</action>
+		<action name="fileAction" class="action.FileAction">
+			<param name="savePath">/upload</param>
+			<param name="maximumSize">2097152</param>
+			<result name="success" type="redirectAction">getFilesAction</result>
+			<result name="error">fileupload.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+		<action name="getFilesAction" class="action.GetFilesAction">
+			<result name="success">deletefiles.jsp</result>
+			<result name="error">deletefiles.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+		<action name="getFileDownload" class="action.GetFileToDownload">
+			<result name="success">filedownload.jsp</result>
+			<result name="error">filedownload.jsp</result>
+		</action>
+		<action name="deleteFilesAction" class="action.DeleteFilesAction">
+			<result name="success" type="redirectAction">getFilesAction</result>
+			<result name="error">deletefiles.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+
+		<action name="addMessageAction" class="action.addMessageAction">
+			<result name="success" type="redirectAction">getMessageAction</result>
+			<result name="error">addmessage.jsp</result>
+			<result name="input">addmessage.jsp</result>
+		</action>
+		<action name="getMessageToDelete" class="action.GetMessageToDelete">
+			<result name="success">deletemessage.jsp</result>
+			<result name="error">deletemessage.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+		<action name="getMessageAction" class="action.GetMessageAction">
+			<result name="success">querymessage.jsp</result>
+			<result name="error">querymessage.jsp</result>
+		</action>
+		<action name="deleteMessageAction" class="action.DeleteMessageAction">
+			<result name="success" type="redirectAction">getMessageToDelete</result>
+			<result name="error">deletemessage.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+		<action name="getMessageDitals" class="action.GetMessageDitals">
+			<result name="success">messageditals.jsp</result>
+			<result name="error">deletemessage.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+		<action name="getTheMessage" class="action.GetTheMessage">
+			<result name="success">showmessage.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+
+		<action name="downloadAction" class="action.DownloadAction">
+			<result name="success" type="stream">
+				<param name="contentDisposition">
+					attachment;filename="${name}"
+                             </param>
+				<param name="inputName">input</param>
+				<param name="bufferSize">2048</param>
+			</result>
+		</action>
+		
+		<action name="getSheLianNews" class="action.GetAllNewsAction" method="getSheLianNews">
+			<result name="sheliannews">sheliannews.jsp</result>
+			<result name="error">sheliannews.jsp</result>
+		</action>
+		<action name="getSheTuanNews" class="action.GetAllNewsAction" method="getSheTuanNews">
+			<result name="shetuannews">shetuannews.jsp</result>
+			<result name="error">shetuannews.jsp</result>
+		</action>
+		<action name="getImportantNews" class="action.GetAllNewsAction" method="getImportantNews">
+			<result name="importantnews">importantnews.jsp</result>
+			<result name="error">importantnews.jsp</result>
+		</action>
+		
+		<action name="getTheNews" class="action.GetTheNews">
+			<result name="success">newsditals.jsp</result>
+			<result name="error">newsditals.jsp</result>
+		</action>
+		
+	</package>
+
+</struts> 

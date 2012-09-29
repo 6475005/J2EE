@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd 
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd 
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+	<!-- Admin Action -->
+	<bean id="loginAction" class="action.LoginAction" scope="prototype">
+		<property name="adminDao" ref="adminDao"></property>
+	</bean>
+	<bean id="addNewsAction" class="action.AddNewsAction" scope="prototype">
+		<property name="newsDao" ref="newsDao"></property>
+	</bean>
+	<bean id="getAllNewsAction" class="action.GetAllNewsAction" scope="prototype">
+		<property name="newsDao" ref="newsDao"></property>
+	</bean>
+	<bean id="index" class="action.GetTenNews" scope="prototype">
+		<property name="newsDao" ref="newsDao"></property>
+	</bean>
+	<bean id="getNewsToDelete" class="action.GetNewsToDelete" scope="prototype">
+		<property name="newsDao" ref="newsDao"></property>
+	</bean>
+	<bean id="updataNewsAction" class="action.UpdataNewsAction" scope="prototype">
+		<property name="newsDao" ref="newsDao"></property>
+	</bean>
+	<bean id="deleteNewsAction" class="action.DeleteNewsAction" scope="prototype">
+		<property name="newsDao" ref="newsDao"></property>
+	</bean>
+	<bean id="getNewsToUpdata" class="action.GetNewsToUpdata" scope="prototype">
+		<property name="newsDao" ref="newsDao"></property>
+	</bean>
+	<bean id="repasswordAction" class="action.rePasswordAction" scope="prototype">
+		<property name="adminDao" ref="adminDao"></property>
+	</bean>
+	<bean id="exitAction" class="action.ExitAction" scope="prototype">
+	</bean>
+	
+	<bean id="getFilesAction" class="action.GetFilesAction" scope="prototype">
+	</bean>
+	<bean id="getFileToDownload" class="action.GetFileToDownload" scope="prototype">
+	</bean>
+	<bean id="deleteFilesAction" class="action.DeleteFilesAction" scope="prototype">
+	</bean>
+	
+	<bean id="addMessageAction" class="action.addMessageAction" scope="prototype">
+		<property name="messageDao" ref="messageDao"></property>
+	</bean>
+	<bean id="getMessageDelete" class="action.GetMessageToDelete" scope="prototype">
+		<property name="messageDao" ref="messageDao"></property>
+	</bean>
+	<bean id="getMessageAction" class="action.GetMessageAction" scope="prototype">
+		<property name="messageDao" ref="messageDao"></property>
+	</bean>
+	<bean id="deleteMessageAction" class="action.DeleteMessageAction" scope="prototype">
+		<property name="messageDao" ref="messageDao"></property>
+	</bean>
+	<bean id="getMessageDitals" class="action.GetMessageDitals" scope="prototype">
+		<property name="messageDao" ref="messageDao"></property>
+	</bean>
+	<bean id="getTheMessage" class="action.GetTheMessage" scope="prototype">
+		<property name="messageDao" ref="messageDao"></property>
+	</bean>
+	<bean id="getTheNews" class="action.GetTheNews" scope="prototype">
+		<property name="newsDao" ref="newsDao"></property>
+	</bean>
+	
+	
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/hkcss?useUnicode=true&amp;characterEncoding=utf-8" />
+		<property name="user" value="root"></property>
+		<property name="password" value="8840153"></property>
+		
+		<property name="maxPoolSize" value="100"></property>
+		<property name="minPoolSize" value="1"></property>
+		<property name="maxIdleTime" value="60"></property>
+		<property name="initialPoolSize" value="3"></property>
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingResources">
+			<list>
+				<value>object/Admin.hbm.xml</value>
+				<value>object/News.hbm.xml</value>
+				<value>object/Message.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="adminDao" class="db.AdminDbManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="newsDao" class="db.NewsDbManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="messageDao" class="db.MessageDbManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+</beans>
+
