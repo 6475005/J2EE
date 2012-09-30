@@ -119,6 +119,7 @@
 				<param name="inputName">input</param>
 				<param name="bufferSize">2048</param>
 			</result>
+			<result name="error" type="redirectAction">getFileDownload</result>
 		</action>
 		
 		<action name="getSheLianNews" class="action.GetAllNewsAction" method="getSheLianNews">

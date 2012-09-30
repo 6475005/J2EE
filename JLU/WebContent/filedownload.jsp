@@ -7,6 +7,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>下载中心</title>
         <link href="css/css.css" rel="stylesheet" type="text/css" />
+        <%
+        String realIP = request.getHeader("x-forwarded-for");
+        String ip = request.getRemoteAddr();
+        if(realIP==null||realIP.length()==0){
+        	session.setAttribute("IP",ip);
+        }else{
+        	session.setAttribute("IP",realIP);
+        }
+        %>
     </head>
     <body>
         <div class="zhong">
@@ -160,22 +169,8 @@ this.setHomePage('http://www.jluccstsl.com/');" style="CURSOR: hand">设为首�
                             <s:iterator value="%{filelist}" id="name" status="ne">
                             <li>
                             	<b>
-                               	<a href="downloadAction?name=${name}" >${name}</a>
+                               	<a href="downloadAction?name=${name}">${name}</a>
                                	</b>
-                            </li>
-                            <li>
-                            <%
-                            String realIP = request.getHeader("x-forwarded-for");
-
-                            String ip = request.getRemoteAddr();
-                                   if(realIP==null||realIP.length()==0){
-                                      out.println("你的IP地址是:"+ip);
-                                   }else{  
-                                      out.println("你的IP地址是:"+realIP);
-                                   }
-
-
-                            %>
                             </li>
 							</s:iterator>
                         </ul>
