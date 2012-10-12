@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- struts配置信息 -->
+	<constant name="struts.multipart.maxSize" value="3048576000"></constant>
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.multipart.saveDir" value="c:/"></constant>
+		
+	<!-- file action -->
+	<package name="action.file" extends="struts-default">
+	<!-- 全局结果集 -->
+		<global-results>
+        	<result name="input" type="redirect">login.jsp</result>
+        	<result name="sqlinj" type="redirect" >error.html</result>
+        </global-results>
+        
+        <action name="downloadAction" class="action.file.DownloadAction">
+			<result name="success" type="stream">
+				<param name="contentDisposition">
+					attachment;filename="${name}"
+                             </param>
+				<param name="inputName">input</param>
+				<param name="bufferSize">2048</param>
+			</result>
+			<result name="error">codeerror.html</result>
+		</action>
+        <action name="fileAction" class="action.file.FileAction">
+			<param name="savePath">/upload</param>
+			<param name="maximumSize">2097152</param>
+			<result name="success" type="redirectAction">getFilesAction</result>
+			<result name="error">fileupload.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+		<action name="getFilesAction" class="action.file.GetFilesAction">
+			<result name="success">deletefiles.jsp</result>
+			<result name="error">deletefiles.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+		<action name="getFileDownload" class="action.file.GetFileToDownload">
+			<result name="success">filedownload.jsp</result>
+			<result name="error">filedownload.jsp</result>
+		</action>
+		<action name="deleteFilesAction" class="action.file.DeleteFilesAction">
+			<result name="success" type="redirectAction">getFilesAction</result>
+			<result name="error">deletefiles.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+	</package>
+
+</struts> 

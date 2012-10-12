@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	<!-- news action -->
+	<package name="action.message" extends="struts-default">
+	<!-- 全局结果集 -->
+		<global-results>
+        	<result name="input" type="redirect">login.jsp</result>
+        	<result name="sqlinj" type="redirect" >error.html</result>
+        </global-results>
+
+		<action name="addMessageAction" class="action.message.addMessageAction">
+			<result name="success" type="redirectAction">getMessageAction</result>
+			<result name="error">addmessage.jsp</result>
+			<result name="input">addmessage.jsp</result>
+		</action>
+		<action name="getMessageToDelete" class="action.message.GetMessageToDelete">
+			<result name="success">deletemessage.jsp</result>
+			<result name="error">deletemessage.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+		<action name="getMessageAction" class="action.message.GetMessageAction">
+			<result name="success">querymessage.jsp</result>
+			<result name="error">querymessage.jsp</result>
+		</action>
+		<action name="deleteMessageAction" class="action.message.DeleteMessageAction">
+			<result name="success" type="redirectAction">getMessageToDelete</result>
+			<result name="error">deletemessage.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+		<action name="getMessageDitals" class="action.message.GetMessageDitals">
+			<result name="success">messageditals.jsp</result>
+			<result name="error">deletemessage.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+		<action name="getTheMessage" class="action.message.GetTheMessage">
+			<result name="success">showmessage.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+	</package>
+
+</struts> 

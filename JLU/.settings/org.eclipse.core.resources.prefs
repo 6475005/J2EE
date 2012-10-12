@@ -1,5 +1,7 @@
-#Mon Sep 24 19:16:50 CST 2012
+#Fri Oct 12 13:24:33 CST 2012
 eclipse.preferences.version=1
-encoding//WebContent/WEB-INF/classes/student.xml=UTF-8
+encoding//WebContent/WEB-INF/classes/news.xml=UTF-8
 encoding//WebContent/addnews.jsp=UTF-8
+encoding//WebContent/codeerror.html=UTF-8
+encoding//WebContent/error.html=UTF-8
 encoding//WebContent/login.jsp=UTF-8

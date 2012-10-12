@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import object.Message;
 import object.News;
 
 import org.hibernate.Query;
@@ -49,27 +50,9 @@ public class NewsDbManager extends HibernateDaoSupport {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<News> querySheLian() {
+	public List<News> query(String type) {
 		News news = new News();
-		news.setType("社联新闻");
-		List<News> list = getHibernateTemplate().findByExample(news);
-		Collections.reverse(list);
-		return list;
-	}
-
-	@SuppressWarnings("unchecked")
-	public List<News> querySheTuan() {
-		News news = new News();
-		news.setType("社团新闻");
-		List<News> list = getHibernateTemplate().findByExample(news);
-		Collections.reverse(list);
-		return list;
-	}
-
-	@SuppressWarnings("unchecked")
-	public List<News> queryImportant() {
-		News news = new News();
-		news.setType("要闻提示");
+		news.setType(type);
 		List<News> list = getHibernateTemplate().findByExample(news);
 		Collections.reverse(list);
 		return list;
@@ -90,28 +73,39 @@ public class NewsDbManager extends HibernateDaoSupport {
 	
 	@SuppressWarnings("unchecked")
 	public List<News> getNewsByPaging(int currentPage) {
-		Session session = getHibernateTemplate().getSessionFactory().openSession();
-		Query query = session.createQuery("from News");
+		List<News> temp = queryAll();
 		int startRow = (currentPage - 1) *10;
-		query.setFirstResult(startRow);
-		query.setMaxResults(10);
-		List<News> list = query.list();
-		Collections.reverse(list);
-		session.close();
+		List<News> list = new ArrayList<News>();
+		for(int i=0;i<10;i++){
+			if((i+startRow)>=temp.size()){
+				return list;
+			}
+			list.add(temp.get(i+startRow));
+		}
+		return list;
+	}
+	
+	public List<News> getNewsByPaging(int currentPage,String type) {
+		List<News> temp = query(type);
+		List<News> list = new ArrayList<News>();
+		int startRow = (currentPage - 1) *10;
+		for(int i=0;i<10;i++){
+			if((i+startRow)>=temp.size()){
+				return list;
+			}
+			list.add(temp.get(i+startRow));
+		}
 		return list;
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<News> getNewsByPaging(int currentPage,String type) {
+	public List<News> queryNews(String title){
 		Session session = getHibernateTemplate().getSessionFactory().openSession();
-		Query query = session.createQuery("from News where type = '"+type+"'");
-		int startRow = (currentPage - 1) *10;
-		query.setFirstResult(startRow);
-		query.setMaxResults(10);
+		Query query = session.createQuery("from object.News  s where s.title like:title");
+		query.setString("title", "%"+title+"%");
 		List<News> list = query.list();
 		Collections.reverse(list);
 		session.close();
 		return list;
 	}
-
 }

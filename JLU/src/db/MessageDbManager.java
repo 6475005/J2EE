@@ -1,5 +1,6 @@
 package db;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -30,14 +31,15 @@ public class MessageDbManager extends HibernateDaoSupport {
 	}
 	@SuppressWarnings("unchecked")
 	public List<Message> getNewsByPaging(int currentPage) {
-		Session session = getHibernateTemplate().getSessionFactory().openSession();
-		Query query = session.createQuery("from Message");
+		List<Message> temp = queryAll();
 		int startRow = (currentPage - 1) *10;
-		query.setFirstResult(startRow);
-		query.setMaxResults(10);
-		List<Message> list = query.list();
-		Collections.reverse(list);
-		session.close();
+		List<Message> list = new ArrayList<Message>();
+		for(int i=0;i<10;i++){
+			if((i+startRow)>=temp.size()){
+				return list;
+			}
+			list.add(temp.get(i+startRow));
+		}
 		return list;
 	}
 }

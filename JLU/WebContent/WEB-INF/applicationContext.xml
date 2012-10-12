@@ -7,69 +7,83 @@
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd 
     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
 
-	<!-- Admin Action -->
-	<bean id="loginAction" class="action.LoginAction" scope="prototype">
+	<!-- 账户操作 -->
+	<bean id="loginAction" class="action.admin.LoginAction" scope="prototype">
 		<property name="adminDao" ref="adminDao"></property>
 	</bean>
-	<bean id="addNewsAction" class="action.AddNewsAction" scope="prototype">
-		<property name="newsDao" ref="newsDao"></property>
-	</bean>
-	<bean id="getAllNewsAction" class="action.GetAllNewsAction" scope="prototype">
-		<property name="newsDao" ref="newsDao"></property>
-	</bean>
-	<bean id="index" class="action.GetTenNews" scope="prototype">
-		<property name="newsDao" ref="newsDao"></property>
-	</bean>
-	<bean id="getNewsToDelete" class="action.GetNewsToDelete" scope="prototype">
-		<property name="newsDao" ref="newsDao"></property>
-	</bean>
-	<bean id="updataNewsAction" class="action.UpdataNewsAction" scope="prototype">
-		<property name="newsDao" ref="newsDao"></property>
-	</bean>
-	<bean id="deleteNewsAction" class="action.DeleteNewsAction" scope="prototype">
-		<property name="newsDao" ref="newsDao"></property>
-	</bean>
-	<bean id="getNewsToUpdata" class="action.GetNewsToUpdata" scope="prototype">
-		<property name="newsDao" ref="newsDao"></property>
-	</bean>
-	<bean id="repasswordAction" class="action.rePasswordAction" scope="prototype">
+	<bean id="repasswordAction" class="action.admin.rePasswordAction" scope="prototype">
 		<property name="adminDao" ref="adminDao"></property>
 	</bean>
-	<bean id="exitAction" class="action.ExitAction" scope="prototype">
+	<bean id="exitAction" class="action.admin.ExitAction" scope="prototype">
 	</bean>
 	
-	<bean id="getFilesAction" class="action.GetFilesAction" scope="prototype">
+	<!-- 新闻操作 -->
+	<bean id="addNewsAction" class="action.news.AddNewsAction" scope="prototype">
+		<property name="newsDao" ref="newsDao"></property>
 	</bean>
-	<bean id="getFileToDownload" class="action.GetFileToDownload" scope="prototype">
+	<bean id="getAllNewsAction" class="action.news.GetAllNewsAction" scope="prototype">
+		<property name="newsDao" ref="newsDao"></property>
 	</bean>
-	<bean id="deleteFilesAction" class="action.DeleteFilesAction" scope="prototype">
+	<bean id="index" class="action.news.GetTenNews" scope="prototype">
+		<property name="newsDao" ref="newsDao"></property>
 	</bean>
-	
-	<bean id="addMessageAction" class="action.addMessageAction" scope="prototype">
-		<property name="messageDao" ref="messageDao"></property>
+	<bean id="getNewsToDelete" class="action.news.GetNewsToDelete" scope="prototype">
+		<property name="newsDao" ref="newsDao"></property>
 	</bean>
-	<bean id="getMessageDelete" class="action.GetMessageToDelete" scope="prototype">
-		<property name="messageDao" ref="messageDao"></property>
+	<bean id="updataNewsAction" class="action.news.UpdataNewsAction" scope="prototype">
+		<property name="newsDao" ref="newsDao"></property>
 	</bean>
-	<bean id="getMessageAction" class="action.GetMessageAction" scope="prototype">
-		<property name="messageDao" ref="messageDao"></property>
+	<bean id="deleteNewsAction" class="action.news.DeleteNewsAction" scope="prototype">
+		<property name="newsDao" ref="newsDao"></property>
 	</bean>
-	<bean id="deleteMessageAction" class="action.DeleteMessageAction" scope="prototype">
-		<property name="messageDao" ref="messageDao"></property>
+	<bean id="getNewsToUpdata" class="action.news.GetNewsToUpdata" scope="prototype">
+		<property name="newsDao" ref="newsDao"></property>
 	</bean>
-	<bean id="getMessageDitals" class="action.GetMessageDitals" scope="prototype">
-		<property name="messageDao" ref="messageDao"></property>
+	<bean id="getTheNews" class="action.news.GetTheNews" scope="prototype">
+		<property name="newsDao" ref="newsDao"></property>
 	</bean>
-	<bean id="getTheMessage" class="action.GetTheMessage" scope="prototype">
-		<property name="messageDao" ref="messageDao"></property>
-	</bean>
-	<bean id="getTheNews" class="action.GetTheNews" scope="prototype">
+	<bean id="queryNews" class="action.news.QueryNews" scope="prototype">
 		<property name="newsDao" ref="newsDao"></property>
 	</bean>
 	
+	<!-- 文件操作 -->
+	<bean id="getFilesAction" class="action.file.GetFilesAction" scope="prototype">
+	</bean>
+	<bean id="getFileToDownload" class="action.file.GetFileToDownload" scope="prototype">
+	</bean>
+	<bean id="deleteFilesAction" class="action.file.DeleteFilesAction" scope="prototype">
+	</bean>
 	
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		
+	<!-- 留言操作 -->
+	<bean id="addMessageAction" class="action.message.addMessageAction" scope="prototype">
+		<property name="messageDao" ref="messageDao"></property>
+	</bean>
+	<bean id="getMessageDelete" class="action.message.GetMessageToDelete" scope="prototype">
+		<property name="messageDao" ref="messageDao"></property>
+	</bean>
+	<bean id="getMessageAction" class="action.message.GetMessageAction" scope="prototype">
+		<property name="messageDao" ref="messageDao"></property>
+	</bean>
+	<bean id="deleteMessageAction" class="action.message.DeleteMessageAction" scope="prototype">
+		<property name="messageDao" ref="messageDao"></property>
+	</bean>
+	<bean id="getMessageDitals" class="action.message.GetMessageDitals" scope="prototype">
+		<property name="messageDao" ref="messageDao"></property>
+	</bean>
+	<bean id="getTheMessage" class="action.message.GetTheMessage" scope="prototype">
+		<property name="messageDao" ref="messageDao"></property>
+	</bean>
+	
+	<!-- 评论操作 -->
+	<bean id="addCommentAction" class="action.comment.addCommentAction" scope="prototype">
+		<property name="commentDao" ref="commentDao"></property>
+	</bean>
+	<bean id="getCommentAction" class="action.comment.GetCommentAction" scope="prototype">
+		<property name="commentDao" ref="commentDao"></property>
+	</bean>
+	
+	<!-- 数据库信息 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">		
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/hkcss?useUnicode=true&amp;characterEncoding=utf-8" />
 		<property name="user" value="root"></property>
@@ -89,16 +103,17 @@
 				<value>object/Admin.hbm.xml</value>
 				<value>object/News.hbm.xml</value>
 				<value>object/Message.hbm.xml</value>
+				<value>object/Comment.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.show_sql">false</prop>
 			</props>
 		</property>
 	</bean>
-
+	<!-- 数据库操作 -->
 	<bean id="adminDao" class="db.AdminDbManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
@@ -106,6 +121,9 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean id="messageDao" class="db.MessageDbManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="commentDao" class="db.CommentDbManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	

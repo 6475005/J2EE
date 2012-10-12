@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- admin action -->
+	<package name="action.admin" extends="struts-default">
+	<!-- 全局结果集 -->
+		<global-results>
+        	<result name="input" type="redirect">login.jsp</result>
+        	<result name="sqlinj" type="redirect" >error.html</result>
+        </global-results>
+		<action name="loginAction" class="action.admin.LoginAction">
+			<result name="success">addnews.jsp</result>
+			<result name="error">login.jsp</result>
+			<result name="input">login.jsp</result>
+			<result name="none">login.jsp</result>
+		</action>
+		<action name="repasswordAction" class="action.admin.rePasswordAction">
+			<result name="success">addnews.jsp</result>
+			<result name="error">repassword.jsp</result>
+			<result name="login" type="redirect">login.jsp</result>
+		</action>
+		<action name="exitAction" class="action.admin.ExitAction">
+			<result name="success" type="redirectAction">index</result>
+		</action>
+	</package>
+
+</struts> 

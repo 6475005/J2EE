@@ -11,5 +11,9 @@
 	
 	<constant name="struts.custom.i18n.resources" value="messageResource"/>
 	<constant name="struts.i18n.encoding" value="UTF-8"/> 
-	 <include file="student.xml"/>
+	<include file="admin.xml"/>
+	<include file="news.xml"/>
+	<include file="file.xml"/>
+	<include file="comment.xml"/>
+	<include file="message.xml"/>
 </struts> 

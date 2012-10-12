@@ -49,12 +49,12 @@ this.setHomePage('http://www.jluccstsl.com/');"
 </div>
 </div>
 <div id="menu3" class="menusel">
-<h2><a href="getSheLianNews">新闻信息</a></h2>
+<h2><a href="getNewsByType?type=0">新闻信息</a></h2>
 <div class="position">
 <ul class="clearfix typeul">
-	<li><a href="getSheLianNews">社联新闻</a></li>
-	<li><a href="getSheTuanNews">社团新闻</a></li>
-	<li class="lli"><a href="getImportantNews">要闻通知</a></li>
+	<li><a href="getNewsByType?type=0">社联新闻</a></li>
+	<li><a href="getNewsByType?type=1">社团新闻</a></li>
+	<li class="lli"><a href="getNewsByType?type=2">要闻通知</a></li>
 </ul>
 </div>
 </div>
@@ -67,7 +67,7 @@ this.setHomePage('http://www.jluccstsl.com/');"
 </div>
 </div>
 <div id="menu5" class="menusel">
-<h2><a href="recruitment.html">社联纳新</a></h2>
+<h2><a href="rgetCommentAction?type=zhiwu">社联游戏</a></h2>
 <div class="position">
 <ul class="clearfix typeul">
 </ul>
@@ -97,9 +97,21 @@ this.setHomePage('http://www.jluccstsl.com/');"
 <div class="left_title">新闻信息</div>
 <div class="left_news">
 <ul>
-	<li><a href="getSheLianNews">社联新闻</a></li>
-	<li><a href="getSheTuanNews">社团新闻</a></li>
-	<li><a href="#" class="hover">要闻通知</a></li>
+	<li><a href="getNewsByType?type=0">社联新闻</a></li>
+	<li><a href="getNewsByType?type=1">社团新闻</a></li>
+	<li><a href="getNewsByType?type=2" class="hover">要闻通知</a></li>
+</ul>
+</div>
+</div>
+<div class="box_1">
+<div class="left_title">新闻检索</div>
+<div class="left_news">
+<ul>
+<s:form action="queryNews">
+	<b>标题：</b>
+	<s:textfield name="title" maxlength="10"></s:textfield>
+	<s:submit value="查询"></s:submit>
+</s:form>
 </ul>
 </div>
 </div>

@@ -11,17 +11,15 @@
 <body>
 <div class="zhong">
 <div class="top">
-<div class="top_left">
-                    吉林大学<br/>
-                    计算机科学与技术学院---社团联合会---欢迎您！
-                </div>
+<div class="top_left">吉林大学<br />
+计算机科学与技术学院---社团联合会---欢迎您！</div>
 <div class="top_right">
 <div class="top_right_1"><span
 	onclick="var strHref=window.location.href;this.style.behavior='url(#default#homepage)';
 this.setHomePage('http://www.jluccstsl.com/');"
 	style="CURSOR: hand">设为首页</span> | <span style="CURSOR: hand"
-	onclick="window.external.addFavorite('http://www.jluccstsl.com/')" title="吉大-计院-社联">收藏本站</span>
-</div>
+	onclick="window.external.addFavorite('http://www.jluccstsl.com/')"
+	title="吉大-计院-社联">收藏本站</span></div>
 <div class="top_right_2"><img src="images/img_1.gif" /></div>
 </div>
 <div class="clear"></div>
@@ -49,12 +47,12 @@ this.setHomePage('http://www.jluccstsl.com/');"
 </div>
 </div>
 <div id="menu3" class="menusel">
-<h2><a href="getSheLianNews">新闻信息</a></h2>
+<h2><a href="getNewsByType?type=0">新闻信息</a></h2>
 <div class="position">
 <ul class="clearfix typeul">
-	<li><a href="getSheLianNews">社联新闻</a></li>
-	<li><a href="getSheTuanNews">社团新闻</a></li>
-	<li class="lli"><a href="getImportantNews">要闻通知</a></li>
+	<li><a href="getNewsByType?type=0">社联新闻</a></li>
+	<li><a href="getNewsByType?type=1">社团新闻</a></li>
+	<li class="lli"><a href="getNewsByType?type=2">要闻通知</a></li>
 </ul>
 </div>
 </div>
@@ -67,7 +65,7 @@ this.setHomePage('http://www.jluccstsl.com/');"
 </div>
 </div>
 <div id="menu5" class="menusel">
-<h2><a href="recruitment.html">社联纳新</a></h2>
+<h2><a href="getCommentAction?type=zhiwu">社联游戏</a></h2>
 <div class="position">
 <ul class="clearfix typeul">
 </ul>
@@ -97,9 +95,21 @@ this.setHomePage('http://www.jluccstsl.com/');"
 <div class="left_title">新闻信息</div>
 <div class="left_news">
 <ul>
-	<li><a href="#" class="hover">社联新闻</a></li>
-	<li><a href="getSheTuanNews">社团新闻</a></li>
-	<li><a href="getImportantNews">要闻通知</a></li>
+	<li><a href="getNewsByType?type=0"class="hover">社联新闻</a></li>
+	<li><a href="getNewsByType?type=1">社团新闻</a></li>
+	<li><a href="getNewsByType?type=2">要闻通知</a></li>
+</ul>
+</div>
+</div>
+<div class="box_1">
+<div class="left_title">新闻检索</div>
+<div class="left_news">
+<ul>
+<s:form action="queryNews">
+	<b>标题：</b>
+	<s:textfield name="title" maxlength="10"></s:textfield>
+	<s:submit value="查询"></s:submit>
+</s:form>
 </ul>
 </div>
 </div>
@@ -130,10 +140,12 @@ this.setHomePage('http://www.jluccstsl.com/');"
 </ul>
 </div>
 <div class="fanye">
-<div class="fanye_left">页次：${currentPage}/${countPage} 页　每页10</div>
-<div class="fanye_right">分页：<a href="getSheLianNews?currentPage=${currentPage-1}"><img
+<div class="fanye_left">页次：${currentPage}/${countPage} 页 每页10</div>
+<div class="fanye_right">分页：<a
+	href="getSheLianNews?currentPage=${currentPage-1}"><img
 	src="images/img_13.gif" /></a>${currentPage} <a
-	href="getSheLianNews?currentPage=${currentPage+1}"><img src="images/img_14.gif" /></a></div>
+	href="getSheLianNews?currentPage=${currentPage+1}"><img
+	src="images/img_14.gif" /></a></div>
 </div>
 </div>
 <div class="clear"></div>

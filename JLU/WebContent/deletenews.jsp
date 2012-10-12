@@ -59,19 +59,13 @@ this.setHomePage('http://www.jluccstsl.com/');" style="CURSOR: hand">设为首�
                     </div>
                 </div>
                 <div id="menu3" class="menusel">
-                    <h2><a href="getSheLianNews">新闻信息</a></h2>
+                    <h2><a href="getNewsByType?type=0">新闻信息</a></h2>
                     <div class="position">
                         <ul class="clearfix typeul">
-                            <li>
-                                <a href="getSheLianNews">社联新闻</a>
-                            </li>
-                            <li>
-                                <a href="getSheTuanNews">社团新闻</a>
-                            </li>
-                            <li class="lli">
-                                <a href="getImportantNews">要闻通知</a>
-                            </li>
-                        </ul>
+	<li><a href="getNewsByType?type=0">社联新闻</a></li>
+	<li><a href="getNewsByType?type=1">社团新闻</a></li>
+	<li class="lli"><a href="getNewsByType?type=2">要闻通知</a></li>
+</ul>
                     </div>
                 </div>
                 <div id="menu4" class="menusel">
@@ -85,7 +79,7 @@ this.setHomePage('http://www.jluccstsl.com/');" style="CURSOR: hand">设为首�
                     </div>
                 </div>
                 <div id="menu5" class="menusel">
-                    <h2><a href="recruitment.html">社联纳新</a></h2>
+                    <h2><a href="getCommentAction?type=zhiwu">社联游戏</a></h2>
                     <div class="position">
                         <ul class="clearfix typeul">
                         </ul>
