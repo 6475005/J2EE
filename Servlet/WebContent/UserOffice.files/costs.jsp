@@ -49,15 +49,20 @@
 	int countPage = (Integer.valueOf(count)/7)+1;
 	String currentpage = request.getParameter("currentPage");
 	int currentPage = 1;
+	String first = "";
+	String last = "";
 	if(currentpage == null || currentpage.length() <= 0){
 		currentPage = 1;
+		first = "disabled "+"onclick=\"return false\"";
 	}else{
 		currentPage = Integer.valueOf(currentpage);
 		if(currentPage >= countPage){
 			currentPage = countPage;
+			last = "disabled "+"onclick=\"return false\"";
 		}
 		if(currentPage <= 0){
 			currentPage = 1;
+			first = "disabled "+"onclick=\"return false\"";
 		}
 	}
 	List<CostDetials> Detials = new ArrayList<CostDetials>();
@@ -119,9 +124,9 @@ style="BACKGROUND-POSITION-Y: -120px; BACKGROUND-IMAGE: url(../images/bg.gif); B
 				<TR>
 					<TD colspan="2" class=gridViewItem>共查询到<%=count %>条结果</TD>
 					<TD class=gridViewItem>共<%=countPage %>页</TD>
-					<TD class=gridViewItem><A class=cmdField href="costs.jsp?currentPage=<%=currentPage-1 %>">上一页</A></TD>
+					<TD class=gridViewItem><A class=cmdField href="costs.jsp?currentPage=<%=currentPage-1 %>"<%=first %>>上一页</A></TD>
 					<TD class=gridViewItem>第<%=currentPage %>页</TD>
-					<TD class=gridViewItem><A class=cmdField href="costs.jsp?currentPage=<%=currentPage+1 %>">下一页</A></TD>
+					<TD class=gridViewItem><A class=cmdField href="costs.jsp?currentPage=<%=currentPage+1 %>"<%=last %>>下一页</A></TD>
 				</TR>
               </TBODY>
             </TABLE>
